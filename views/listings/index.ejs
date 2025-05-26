@@ -1,0 +1,193 @@
+<% layout ("/layout/boilerplate") %>
+
+<style>
+  #filters {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  #filters a {
+    text-decoration: none;
+    color: black;
+  }
+  .filter {
+    text-align: center;
+    margin: 1rem;
+    margin-left: 0;
+    opacity: 0.6;
+    
+  }
+  .filter:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+  .filter p {
+    font-size: 0.8rem;
+    
+  }
+  .tax-info {
+    font-size: 0.8rem;
+    color: #6c757d;
+    display: none;
+  }
+  
+</style>
+<div id="filters">
+  
+     <!-- Trending -->
+  <a href="/listings?category=trending">
+    <div class="filter">
+      <div><i class="fas fa-fire"></i></div>
+      <p>Trending</p>
+    </div>
+  </a>
+
+  <!-- Iconic cities -->
+  <a href="/listings?category=iconic-cities">
+    <div class="filter">
+      <div><i class="fas fa-city"></i></div>
+      <p>Iconic cities</p>
+    </div>
+  </a>
+
+  <!-- Mountain city -->
+  <a href="/listings?category=mountain-city">
+    <div class="filter">
+      <div><i class="fas fa-mountain"></i></div>
+      <p>Mountain city</p>
+    </div>
+  </a>
+
+  <!-- Castles -->
+  <a href="/listings?category=castles">
+    <div class="filter">
+      <div><i class="fas fa-chess-rook"></i></div>
+      <p>Castles</p>
+    </div>
+  </a>
+
+  <!-- Amazing Pools -->
+  <a href="/listings?category=amazing-pools">
+    <div class="filter">
+      <div><i class="fas fa-swimming-pool"></i></div>
+      <p>Amazing Pools</p>
+    </div>
+  </a>
+
+  <!-- Beachfront -->
+  <a href="/listings?category=beachfront">
+    <div class="filter">
+      <div><i class="fas fa-umbrella-beach"></i></div>
+      <p>Beachfront</p>
+    </div>
+  </a>
+
+  <!-- Lakeside -->
+  <a href="/listings?category=lakeside">
+    <div class="filter">
+      <div><i class="fas fa-water"></i></div>
+      <p>Lakeside</p>
+    </div>
+  </a>
+
+  <!-- Ski-in/Ski-out -->
+  <a href="/listings?category=ski-in-out">
+    <div class="filter">
+      <div><i class="fas fa-skiing"></i></div>
+      <p>Ski-in/Ski-out</p>
+    </div>
+  </a>
+
+ 
+
+  <!-- Camping -->
+  <a href="/listings?category=camping">
+    <div class="filter">
+      <div><i class="fas fa-campground"></i></div>
+      <p>Camping</p>
+    </div>
+  </a>
+
+  <!-- Farms -->
+  <a href="/listings?category=farms">
+    <div class="filter">
+      <div><i class="fas fa-tractor"></i></div>
+      <p>Farms</p>
+    </div>
+  </a>
+
+  <!-- Arctic -->
+  <a href="/listings?category=arctic">
+    <div class="filter">
+      <div><i class="fas fa-snowflake"></i></div>
+      <p>Arctic</p>
+    </div>
+  </a>
+
+  <!-- Treehouses -->
+  <a href="/listings?category=treehouses">
+    <div class="filter">
+      <div><i class="fas fa-tree"></i></div>
+      <p>Treehouses</p>
+    </div>
+  </a>
+
+  <!-- Rooms -->
+  <a href="/listings?category=rooms">
+    <div class="filter">
+      <div><i class="fas fa-bed"></i></div>
+      <p>Rooms</p>
+    </div>
+  </a>
+    <div class="form-check form-switch form-check-reverse">
+      <input class="form-check-input" type="checkbox" id="switchCheckReverse" />
+      <label class="form-check-label" for="switchCheckReverse"
+        >Display After Total Taxes</label
+      >
+    </div>
+  </div>
+
+  <h3>Listing</h3>
+
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <% allListings.forEach(function(listing) { %>
+    <a href="/listings/<%= listing._id %>" style="text-decoration: none">
+      <div class="card listing-card">
+        <img
+          src="<%=listing.image.url%>"
+          class="card-img-top"
+          alt="..."
+          style="height: 20rem"
+        />
+        <div class="card-img-overlay"></div>
+        <div class="card-body">
+          <p class="card-text">
+            <strong><%= listing.title %></strong><br />
+            <!-- <strong>Description:</strong> <%= listing.description %><br /> -->
+            <!-- <strong>Country:</strong> <%= listing.country %><br />
+            <strong>Location:</strong> <%= listing.location %><br /> -->
+            <strong>Price:</strong> &#8377;<%=
+            listing.price.toLocaleString("en-IN") %>/night
+            <i class="tax-info">&nbsp; &nbsp;+18%GST</i>
+          </p>
+        </div>
+      </div>
+    </a>
+    <% }) %>
+  </div>
+
+  <script>
+    document
+      .getElementById("switchCheckReverse")
+      .addEventListener("change", function () {
+        let taxinfo = document.getElementsByClassName("tax-info");
+        for (info of taxinfo) {
+          if (info.style.display != "inline") {
+            info.style.display = "inline";
+          } else {
+            info.style.display = "none";
+          }
+        }
+      });
+  </script>
+</div>

@@ -1,0 +1,131 @@
+<% layout ("/layout/boilerplate") %>
+<body>
+  <div class="row">
+    <div class="col-8 offset-2">
+      <br /><br />
+      <h3>Create New Listing</h3>
+      <form
+        method="POST"
+        action="/listings"
+        class="needs-validation"
+        novalidate
+        enctype="multipart/form-data"
+      >
+        <!-- Title Field -->
+        <div class="mb-3">
+          <label for="title" class="form-label">Title</label>
+          <input
+            type="text"
+            class="form-control"
+            id="title"
+            placeholder="Add a catchy title"
+            name="listing[title]"
+            required
+          />
+          <div class="invalid-feedback">Please provide a valid title.</div>
+        </div>
+
+        <!-- Description Field -->
+        <div class="mb-3">
+          <label for="description" class="form-label">Description</label>
+          <textarea
+            class="form-control"
+            id="description"
+            name="listing[description]"
+            required
+          ></textarea>
+          <div class="invalid-feedback">
+            Please provide a valid description.
+          </div>
+        </div>
+
+        <!-- Fixed Image Upload Field -->
+        <div class="mb-3">
+          <label for="image" class="form-label">Upload Image</label>
+          <input
+            type="file"
+            class="form-control"
+            id="image"
+            name="image"
+            accept="image/*"
+            required
+          />
+          <div class="invalid-feedback">Please select a valid image file.</div>
+        </div>
+
+        <!-- Price and Country -->
+        <div class="row">
+          <div class="mb-3 col-md-4">
+            <label for="price" class="form-label">Price</label>
+            <input
+              type="number"
+              class="form-control"
+              id="price"
+              placeholder="Enter price"
+              name="listing[price]"
+              required
+            />
+            <div class="invalid-feedback">Please provide a valid price.</div>
+          </div>
+          <div class="mb-3 col-md-8">
+            <label for="country" class="form-label">Country</label>
+            <input
+              type="text"
+              class="form-control"
+              id="country"
+              placeholder="Enter country"
+              name="listing[country]"
+              required
+            />
+            <div class="invalid-feedback">Please provide a valid country.</div>
+          </div>
+        </div>
+
+        <!-- Location -->
+        <div class="mb-3">
+          <label for="location" class="form-label">Location</label>
+          <input
+            type="text"
+            class="form-control"
+            id="location"
+            placeholder="Enter location"
+            name="listing[location]"
+            required
+          />
+          <div class="invalid-feedback">Please provide a valid location.</div>
+        </div>
+        <!-- Category  -->
+        <div class="mb-3">
+          <label for="category" class="form-label">Category</label>
+          <select
+            class="form-select"
+            id="category"
+            name="listing[category]"
+            required
+          >
+            <option value="" disabled selected>Select a category</option>
+            <option value="trending">Trending</option>
+            <option value="iconic-cities">Iconic cities</option>
+            <option value="mountain-city">Mountain city</option>
+            <option value="castles">Castles</option>
+            <option value="amazing-pools">Amazing Pools</option>
+            <option value="beachfront">Beachfront</option>
+            <option value="lakeside">Lakeside</option>
+            <option value="ski-in-out">Ski-in/Ski-out</option>
+            <option value="unique-stays">Unique stays</option>
+            <option value="camping">Camping</option>
+            <option value="farms">Farms</option>
+            <option value="arctic">Arctic</option>
+            <option value="treehouses">Treehouses</option>
+            <option value="rooms">Rooms</option>
+          </select>
+          <div class="invalid-feedback">Please select a valid category.</div>
+        </div>
+
+        <br /><br />
+        <button type="submit" class="btn btn-danger">Add</button>
+        <br /><br />
+      </form>
+    </div>
+  </div>
+</body>

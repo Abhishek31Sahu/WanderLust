@@ -1,0 +1,83 @@
+<nav class="navbar navbar-expand-md bg-body-tertiary border-bottom sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/listings">
+      <i class="fa-regular fa-compass"></i
+    ></a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link" href="/listings">Explore</a>
+
+        <!-- <a class="nav-link disabled" aria-disabled="true">Disabled</a> -->
+      </div>
+      <div class="container">
+        <form
+          class="d-flex"
+          role="search"
+          action="/listings/search"
+          method="post"
+        >
+          <input
+            class="form-control search-input ms-auto"
+            type="search"
+            placeholder="Search destinations"
+            aria-label="Search"
+            name="location"
+          />
+          <button class="btn btn-outline-success search-btn" type="submit">
+            <i class="fa-solid fa-magnifying-glass me-2"></i>Search
+          </button>
+        </form>
+      </div>
+      <div class="navbar-nav ms-auto">
+        <a class="nav-link" href="/listings/new">Airbnb your home</a>
+        <% if(!currentUser) {%>
+        <a class="nav-link" href="/users/signup"><b>Signup</b></a>
+        <a class="nav-link" aria-current="page" href="/users/login"
+          ><b>Login</b></a
+        >
+        <% }%> <%if(currentUser) { %>
+        <a class="nav-link" href="/users/profile"><b>Profile</b></a>
+        <a class="nav-link" href="/users/logout"><b>Logout</b></a>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<style>
+  .search-input {
+    width: 250px;
+    margin-right: 0.6rem;
+    border-radius: 25px;
+    padding: 7px 25px 7px 35px;
+    border: 1px solid rgb(217, 212, 212);
+    <
+  }
+  .search-btn {
+    margin-right: 18rem;
+    background-color: rgb(250, 54, 54);
+    color: white;
+    border-radius: 25px;
+    padding: 7px 15px 7px 15px;
+    border: 1px solid #ced4da;
+  }
+  .search-btn:hover {
+    margin-right: 18rem;
+    background-color: rgb(250, 54, 54);
+    color: white;
+    border-radius: 25px;
+    padding: 7px 15px 7px 15px;
+    border: 1px solid #ced4da;
+  }
+</style>
